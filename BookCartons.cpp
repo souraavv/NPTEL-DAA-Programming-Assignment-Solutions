@@ -1,4 +1,4 @@
-
+/*
 Book cartons
 
 A university department is shifting its department library to a more spacious room on a newly constructed floor. The books from the library have been packed into m cartons, numbered 1, 2, …, m, containing b1, b2, …, bm books, respectively, and transported to the new library room.
@@ -33,6 +33,7 @@ Sample Input 2:
 Sample Output 2:
 100 / 100 / 100 / 100 100
 
+ */
 -- Solution -- 
 
 #include <bits/stdc++.h>
