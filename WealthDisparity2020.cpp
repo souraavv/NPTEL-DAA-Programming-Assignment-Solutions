@@ -12,9 +12,10 @@ void dfs(int u, int par, int mxVal) {
   	ans = max(ans, mxVal - cost[u]);
   	for(int v: g[u]) {
   		if(v != par)
-          dfs(v, u, mxVal);
+          		dfs(v, u, mxVal);
     }	
 }
+
 int32_t main() {
   	ios::sync_with_stdio(false);
   	cin.tie(0);
@@ -37,6 +38,6 @@ int32_t main() {
     }
   
     dfs(root, -1, cost[root]);
-  	cout << ans;
- 	return 0; 
+    cout << ans;
+    return 0; 
 }
