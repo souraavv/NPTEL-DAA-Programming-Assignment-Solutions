@@ -17,7 +17,7 @@ int32_t main()
 	for (int i = 1; i <= n; ++i)
 		cin >> greenLight[i];
 	
-    for (int i = 0; i < m; ++i) {
+    	for (int i = 0; i < m; ++i) {
 		int u, v, w;
 		cin >> u >> v >> w;
 		g[u].push_back({ v, w });
