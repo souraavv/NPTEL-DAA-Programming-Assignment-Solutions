@@ -7,8 +7,8 @@ vector<vector<pair<int, int> >> g;
 
 int32_t main()
 {
-	int s, d;
-	cin >> s >> d;
+	int source, dest;
+	cin >> source >> dest;
 	int n, m;
 	cin >> n >> m;
 	vector<int> greenLight(n + 1);
@@ -24,10 +24,10 @@ int32_t main()
 		g[v].push_back({ u, w });
 	}
 	priority_queue<pair<int, int>, vector< pair<int, int> >, greater<pair<int, int>>> q;
-	q.push({ s, 0 });
+	q.push({ source, 0 });
 	vector<int> dist(n + 1, inf);
 	vector<int> vis(n + 1, 0);
-	dist[s] = 0;
+	dist[source] = 0;
 	while (!q.empty()) {
 		pair<int, int> p = q.top();
 		q.pop();
@@ -36,7 +36,7 @@ int32_t main()
 		for (auto p: g[u]) {
 			int v = p.first;
 			int w = p.second;
-			if (v == d) {
+			if (v == dest) {
 				int Dist = dist[u] + w;
 				if (dist[v] > Dist) {
 					dist[v] = Dist;
@@ -53,6 +53,6 @@ int32_t main()
 			}
 		}
 	}
-	cout << dist[d] << '\n';
+	cout << dist[dest] << '\n';
 	return 0;
 }
