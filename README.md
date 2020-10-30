@@ -6,7 +6,7 @@ Certificate Link : [Click here](https://github.com/souraavv/NPTEL/blob/main/Algo
 
 --------------------------------------------------------------------------------
 
-**Problem: Book Cartons**
+**Problem 1: Book Cartons**
 
 
 **Prerequisite:** Binary Search + Greedy.
@@ -256,6 +256,8 @@ have allocate no more than the sum of all books in all cartons so that is the up
     }
 
 ***
+
+**Problem 2**
 
 **Here there be Dragons(IOI Training Camp, 2012)**
 
