@@ -6,10 +6,10 @@ Certificate Link : [Click here](https://github.com/souraavv/NPTEL/blob/main/Algo
 
 --------------------------------------------------------------------------------
 
-**Problem 1: Book Cartons**
+# **Problem 1: Book Cartons**
 
 
-**Prerequisite:** Binary Search + Greedy.
+## **Prerequisite:** Binary Search + Greedy.
 
 
 
@@ -257,9 +257,9 @@ have allocate no more than the sum of all books in all cartons so that is the up
 
 ***
 
-**Problem 2**
+# **Problem 2**
 
-**Here there be Dragons(IOI Training Camp, 2012)**
+## **Here there be Dragons(IOI Training Camp, 2012)**
 
 Since We can’t go with greedy strategy there can be various counter examples. So we will use dynamic programming.
 
@@ -363,7 +363,7 @@ So we iterate from dragon no. k to last dragon if it is the last dragon to kill 
     Complexity: Time complexity:  O( k * d2 )  
     Space Complexity : O(k*d)
 
-**Code**
+## **Code**
 
     #include <bits/stdc++.h>
     using namespace std;
@@ -427,3 +427,99 @@ So we iterate from dragon no. k to last dragon if it is the last dragon to kill 
 
 ***
 
+# **Problem 3**
+
+## **Road Trip and Museums**
+
+**Explanation:**
+We have to iterate through each connected component and during iterating 
+we will keep store in a variable say sum  = the total  no. of museums  
+in a connected  component. Store this sum in an array and do this for 
+each connected component and when we are done with visiting all component 
+Sort this array and depending upon the size of k we can select k/2 museums 
+for each. For sure Lavanya will pick the k/2  with greatest value of 
+no. of museums from the array and Nikhil will pick the smallest k/2 value.
+If k is odd then Lavanya will pick 1 more i.e k/2 + 1 .
+
+and if total no. of connected component is smaller than k then ans is -1.
+
+### **Code:**
+
+    #include <bits/stdc++.h>
+    using namespace std;
+
+    #define print(x) cerr << #x << " is " << x << endl;
+    #define int long long int
+    #define vi vector<int>
+    #define all(v) v.begin(), v.end()
+    #define pb push_back
+
+
+    vector<vector<int> > g;
+    vector<int> val, vis;
+    int sum = 0;
+
+
+    void dfs(int u) {
+        if(vis[u])
+            return;
+        vis[u] = 1;
+        sum += val[u]; // sum contain the sum of total museums in a connected component
+        for(int v: g[u]) // Running through adj list
+          if(!vis[v])
+              dfs(v);
+    }
+
+    int32_t main()
+    {
+        ios::sync_with_stdio(false);
+        cin.tie(0);
+
+        int n, m, k;
+        cin >> n >> m >> k;
+        g = vector<vector<int> >(n + 1);
+        val = vector<int>(n + 1);
+        for(int i = 0; i < m; ++i){
+            int u, v;
+            cin >> u >> v;
+            g[u].push_back(v);
+            g[v].push_back(u);
+        }
+
+        for(int i = 1;i <= n; ++i)
+            cin >> val[i];
+        vector<int> ans;
+        vis = vector<int>(n + 1,0);
+        
+        for(int i = 1; i <= n; ++i){
+            if(!vis[i]){
+                sum = 0;
+                dfs(i);
+                ans.push_back(sum);
+            }
+        }
+        
+        sort(ans.begin(), ans.end());
+        int finalAns = 0; 
+        if(ans.size() < k)
+            cout << "-1\n"; 
+        else{
+            
+            // If total months are odd then : Lavanya will pick the 
+            // k/2 +1 greatest value from sorted array
+            // and Nikhil will pick k/2 element from starting of sorted array.
+            // If n is even then both will pick k/2. Lavanya pick from end of 
+            // sorted array( last k/2 max values)
+            // ans Nikhil will pick k/2 from starting of sorted array 
+            int n = ans.size();
+            int p = k / 2;
+            for(int i = 0; i < p; ++i)
+                finalAns += ans[i]; // first k/2
+            if(k % 2)
+                p++;    
+            for(int i = n - 1; i >= n - p; --i)
+                finalAns += ans[i]; // last k/2 if k is even : else last k/2 + 1
+            cout<<finalAns<<"\n";
+        }
+        return 0;
+    }
