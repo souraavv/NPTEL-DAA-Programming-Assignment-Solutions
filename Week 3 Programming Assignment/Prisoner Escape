@@ -1,0 +1,69 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+#define int long long int
+
+const int N = 1e6 + 10;
+const int mod = 1e9 + 7;
+
+map<int, pair<int, int>> coordinates;
+vector<vector<int> >g;
+
+int l, w, n;
+	
+bool distance(int i, int j) {
+	int Y = coordinates[i].second - coordinates[j].second;
+	int X = coordinates[i].first - coordinates[j].first;
+	X *= X;
+	Y *= Y;
+	int atMax = 200 * 200;
+	return (X + Y <= atMax);
+}
+
+bool bfs() {
+	queue<int> q;
+	vector<int> vis(n + 1, 0);
+
+	for(int i = 0; i < n; ++i) {
+		if(coordinates[i].second <= 100) {
+			q.push(i);
+		}
+	}
+
+	while(!q.empty()) {
+		int u = q.front();
+		q.pop();
+		for(int v: g[u]) {
+			if(!vis[v]) {
+				if(abs(w - coordinates[v].second) <= 100)
+					return true;
+				else {
+					vis[v] = 1;
+					q.push(v);
+				}
+			}
+ 		}
+	}
+	return 0;
+}
+
+int32_t main() {
+
+	cin >> l >> w >> n;
+	g = vector<vector<int> >(n);	
+	
+	for(int i = 0; i < n; ++i) {
+		cin >> coordinates[i].first >> coordinates[i].second;
+	}
+
+	for(int i = 0; i < n - 1; ++i) {
+		for(int j = i + 1; j < n; ++j) {
+			if(distance(i, j)) {
+				g[i].push_back(j);
+				g[j].push_back(i);
+			}
+		}
+	}
+	cout << (bfs() ? "1\n" : "0\n");
+	return 0;
+}
