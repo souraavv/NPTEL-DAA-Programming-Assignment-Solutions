@@ -1,5 +1,7 @@
 Sourav Sharma (UIIT Shimla)
 
+Email: souravsharma@uiit.ac.in
+
 NPTEL-Design Analysis And Algorithm - Programming Assignments Solutions
 
 Certificate Link : [Click here](https://github.com/souraavv/NPTEL/blob/main/Algorithm/DAAlgorithms.pdf)
