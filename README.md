@@ -1,6 +1,6 @@
 Sourav Sharma (UIIT Shimla)
 
-Email: souravsharma2468@gmail.com
+Any query to above solutions ? Email: souravsharma2468@gmail.com
 
 NPTEL-Design Analysis And Algorithm - Programming Assignments Solutions
 
